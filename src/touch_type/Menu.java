@@ -39,22 +39,32 @@ public class Menu extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Exit");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Settings");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, -1, -1));
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Words");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, -1, -1));
 
-        jButton4.setText("jButton3");
+        jButton4.setText("Paragrahs");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, -1, -1));
 
-        jButton5.setText("jButton3");
+        jButton5.setText("Letters");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
 
-        jButton6.setText("jButton6");
+        jButton6.setText("Tutorial");
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 48)); // NOI18N
@@ -63,6 +73,14 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
