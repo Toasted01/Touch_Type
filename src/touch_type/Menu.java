@@ -34,8 +34,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
-        setSize(new java.awt.Dimension(1920, 1080));
+        setPreferredSize(new java.awt.Dimension(1000, 750));
+        setSize(new java.awt.Dimension(1000, 750));
 
         Exit.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         Exit.setForeground(new java.awt.Color(255, 0, 51));
