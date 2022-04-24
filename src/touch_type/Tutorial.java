@@ -103,7 +103,9 @@ public class Tutorial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void TutorialHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorialHomeActionPerformed
-        // TODO add your handling code here:
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_TutorialHomeActionPerformed
 
     /**
