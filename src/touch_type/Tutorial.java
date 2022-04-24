@@ -52,28 +52,28 @@ public class Tutorial extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 102, 102));
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("jButton3");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(255, 153, 102));
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("jButton4");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 102));
         jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setText("jButton5");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, -1));
 
         jButton6.setBackground(new java.awt.Color(102, 255, 102));
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jButton6.setText("jButton6");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, -1, -1));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 500, -1, -1));
 
         jButton7.setBackground(new java.awt.Color(102, 204, 255));
         jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jButton7.setText("jButton7");
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 520, -1, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, -1, -1));
 
         jLabel2.setText("Ring Finger");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, -1, -1));
@@ -92,6 +92,10 @@ public class Tutorial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
