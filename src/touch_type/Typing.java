@@ -21,6 +21,8 @@ public class Typing extends javax.swing.JFrame {
      * My Variables
      */
     public int mode = 0;
+    private int colour = 0;
+    private int magnify = 0;
     
     /**
      * This method is called from within the constructor to initialize the form.

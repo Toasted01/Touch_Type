@@ -96,7 +96,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_WordsBTNActionPerformed
 
     private void TutorialBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorialBTNActionPerformed
-        // TODO add your handling code here:
+        Tutorial tutorial = new Tutorial();
+        tutorial.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_TutorialBTNActionPerformed
 
     private void TutorialBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TutorialBTNMouseClicked
