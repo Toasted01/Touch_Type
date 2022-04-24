@@ -36,7 +36,6 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         setSize(new java.awt.Dimension(1920, 1080));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Exit.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         Exit.setForeground(new java.awt.Color(255, 0, 51));
@@ -46,7 +45,6 @@ public class Menu extends javax.swing.JFrame {
                 ExitActionPerformed(evt);
             }
         });
-        getContentPane().add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         WordsBTN.setText("Words");
         WordsBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -54,7 +52,6 @@ public class Menu extends javax.swing.JFrame {
                 WordsBTNActionPerformed(evt);
             }
         });
-        getContentPane().add(WordsBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 90, -1));
 
         ParagrahsBTN.setText("Paragrahs");
         ParagrahsBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +59,6 @@ public class Menu extends javax.swing.JFrame {
                 ParagrahsBTNActionPerformed(evt);
             }
         });
-        getContentPane().add(ParagrahsBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 90, -1));
 
         LettersBTN.setText("Letters");
         LettersBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +66,6 @@ public class Menu extends javax.swing.JFrame {
                 LettersBTNActionPerformed(evt);
             }
         });
-        getContentPane().add(LettersBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 90, -1));
 
         TutorialBTN.setText("Tutorial");
         TutorialBTN.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -83,11 +78,46 @@ public class Menu extends javax.swing.JFrame {
                 TutorialBTNActionPerformed(evt);
             }
         });
-        getContentPane().add(TutorialBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 90, -1));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 48)); // NOI18N
         jLabel1.setText("Touch type training");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(Exit))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(430, 430, 430)
+                .addComponent(TutorialBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(LettersBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(WordsBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(ParagrahsBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(Exit)
+                .addGap(174, 174, 174)
+                .addComponent(jLabel1)
+                .addGap(88, 88, 88)
+                .addComponent(TutorialBTN)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LettersBTN)
+                    .addComponent(WordsBTN)
+                    .addComponent(ParagrahsBTN)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

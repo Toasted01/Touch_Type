@@ -44,10 +44,8 @@ public class Typing extends javax.swing.JFrame {
         Clock = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TypingHome.setText("Home");
-        getContentPane().add(TypingHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -56,13 +54,9 @@ public class Typing extends javax.swing.JFrame {
         TextOutput.setText(" ");
         jPanel1.add(TextOutput, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 16, 970, 150));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 990, 180));
-
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(TextInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 970, 160));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 990, 180));
+        jPanel2.add(TextInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 900, 160));
 
         ColourBlind.setText("Colour Blind");
         ColourBlind.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +64,6 @@ public class Typing extends javax.swing.JFrame {
                 ColourBlindActionPerformed(evt);
             }
         });
-        getContentPane().add(ColourBlind, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 550, -1, -1));
 
         Magniy.setText("Magnify");
         Magniy.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +71,6 @@ public class Typing extends javax.swing.JFrame {
                 MagniyActionPerformed(evt);
             }
         });
-        getContentPane().add(Magniy, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 550, -1, -1));
 
         SaveStats.setText("Save");
         SaveStats.addActionListener(new java.awt.event.ActionListener() {
@@ -86,11 +78,51 @@ public class Typing extends javax.swing.JFrame {
                 SaveStatsActionPerformed(evt);
             }
         });
-        getContentPane().add(SaveStats, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 550, -1, -1));
 
         Clock.setFont(new java.awt.Font("sansserif", 0, 48)); // NOI18N
         Clock.setText("00:00");
-        getContentPane().add(Clock, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(TypingHome))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(430, 430, 430)
+                .addComponent(Clock))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(ColourBlind)
+                .addGap(264, 264, 264)
+                .addComponent(SaveStats)
+                .addGap(285, 285, 285)
+                .addComponent(Magniy))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(TypingHome)
+                .addGap(2, 2, 2)
+                .addComponent(Clock)
+                .addGap(8, 8, 8)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ColourBlind)
+                    .addComponent(SaveStats)
+                    .addComponent(Magniy)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

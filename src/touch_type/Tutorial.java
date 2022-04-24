@@ -42,7 +42,6 @@ public class Tutorial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 1000));
         setSize(new java.awt.Dimension(1000, 1000));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TutorialHome.setText("Home");
         TutorialHome.addActionListener(new java.awt.event.ActionListener() {
@@ -50,22 +49,17 @@ public class Tutorial extends javax.swing.JFrame {
                 TutorialHomeActionPerformed(evt);
             }
         });
-        getContentPane().add(TutorialHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/touch_type/keyboard.PNG"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(255, 102, 102));
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(255, 153, 102));
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 102));
         jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, -1));
 
         jButton6.setBackground(new java.awt.Color(102, 255, 102));
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
@@ -74,26 +68,84 @@ public class Tutorial extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 500, -1, -1));
 
         jButton7.setBackground(new java.awt.Color(102, 204, 255));
         jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, -1, -1));
 
         jLabel2.setText("Ring Finger");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, -1, -1));
 
         jLabel3.setText("Middle finger");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, -1, -1));
 
         jLabel4.setText("Index Finger");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, -1, -1));
 
         jLabel5.setText("Thumb");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, -1, -1));
 
         jLabel6.setText("Pinky finger");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(TutorialHome))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(440, 440, 440)
+                .addComponent(jButton3)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel6))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(440, 440, 440)
+                .addComponent(jButton4)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel2))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(440, 440, 440)
+                .addComponent(jButton5)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel3))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(440, 440, 440)
+                .addComponent(jButton6)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel4))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(440, 440, 440)
+                .addComponent(jButton7)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel5))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(TutorialHome)
+                .addGap(162, 162, 162)
+                .addComponent(jLabel1)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3)
+                    .addComponent(jLabel6))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4)
+                    .addComponent(jLabel2))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton5)
+                    .addComponent(jLabel3))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6)
+                    .addComponent(jLabel4))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton7)
+                    .addComponent(jLabel5)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
