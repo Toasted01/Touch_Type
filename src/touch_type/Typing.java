@@ -4,6 +4,9 @@
  */
 package touch_type;
 
+import java.awt.Container;
+import java.awt.Font;
+
 /**
  *
  * @author Tom
@@ -22,7 +25,6 @@ public class Typing extends javax.swing.JFrame {
      */
     public int mode = 0;
     private int colour = 0;
-    private int magnify = 0;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +41,7 @@ public class Typing extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         TextInput = new javax.swing.JTextField();
         ColourBlind = new javax.swing.JToggleButton();
-        Magniy = new javax.swing.JToggleButton();
+        Magnify = new javax.swing.JToggleButton();
         SaveStats = new javax.swing.JButton();
         Clock = new javax.swing.JLabel();
 
@@ -55,7 +57,7 @@ public class Typing extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         TextOutput.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        TextOutput.setText(" ");
+        TextOutput.setText("LLLLLLLLLLLLLLLLLLLLL");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,10 +102,10 @@ public class Typing extends javax.swing.JFrame {
             }
         });
 
-        Magniy.setText("Magnify");
-        Magniy.addActionListener(new java.awt.event.ActionListener() {
+        Magnify.setText("Magnify");
+        Magnify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MagniyActionPerformed(evt);
+                MagnifyActionPerformed(evt);
             }
         });
 
@@ -139,7 +141,7 @@ public class Typing extends javax.swing.JFrame {
                 .addGap(264, 264, 264)
                 .addComponent(SaveStats)
                 .addGap(285, 285, 285)
-                .addComponent(Magniy))
+                .addComponent(Magnify))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,23 +158,44 @@ public class Typing extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ColourBlind)
                     .addComponent(SaveStats)
-                    .addComponent(Magniy)))
+                    .addComponent(Magnify)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ColourBlindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColourBlindActionPerformed
-        // TODO add your handling code here:
+        Container c = getContentPane();
+        
+        if (ColourBlind.isSelected())
+        {
+            colour = 1;
+        }
+        else
+        {
+            colour = 0;
+        }
+        
     }//GEN-LAST:event_ColourBlindActionPerformed
 
     private void SaveStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveStatsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SaveStatsActionPerformed
 
-    private void MagniyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MagniyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MagniyActionPerformed
+    private void MagnifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MagnifyActionPerformed
+        Container c = getContentPane();
+        
+        if (Magnify.isSelected())
+        {
+            Font large = new Font("Serif", Font.PLAIN, 24);
+            TextOutput.setFont(large);
+        }
+        else
+        {
+            Font small = new Font("Serif", Font.PLAIN, 18);
+            TextOutput.setFont(small);
+        }
+    }//GEN-LAST:event_MagnifyActionPerformed
 
     private void TypingHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypingHomeActionPerformed
         Menu menu = new Menu();
@@ -218,7 +241,7 @@ public class Typing extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Clock;
     private javax.swing.JToggleButton ColourBlind;
-    private javax.swing.JToggleButton Magniy;
+    private javax.swing.JToggleButton Magnify;
     private javax.swing.JButton SaveStats;
     private javax.swing.JTextField TextInput;
     private javax.swing.JLabel TextOutput;
