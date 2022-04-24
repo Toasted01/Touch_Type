@@ -187,12 +187,12 @@ public class Typing extends javax.swing.JFrame {
         
         if (Magnify.isSelected())
         {
-            Font large = new Font("Serif", Font.PLAIN, 24);
+            Font large = new Font("Sansserif", Font.PLAIN, 28);
             TextOutput.setFont(large);
         }
         else
         {
-            Font small = new Font("Serif", Font.PLAIN, 18);
+            Font small = new Font("Sansserif", Font.PLAIN, 18);
             TextOutput.setFont(small);
         }
     }//GEN-LAST:event_MagnifyActionPerformed
