@@ -52,6 +52,11 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(WordsBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 90, -1));
 
         ParagrahsBTN.setText("Paragrahs");
+        ParagrahsBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ParagrahsBTNActionPerformed(evt);
+            }
+        });
         getContentPane().add(ParagrahsBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 90, -1));
 
         LettersBTN.setText("Letters");
@@ -97,6 +102,10 @@ public class Menu extends javax.swing.JFrame {
     private void TutorialBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TutorialBTNMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_TutorialBTNMouseClicked
+
+    private void ParagrahsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParagrahsBTNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ParagrahsBTNActionPerformed
 
     /**
      * @param args the command line arguments

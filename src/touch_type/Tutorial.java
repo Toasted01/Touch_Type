@@ -45,6 +45,11 @@ public class Tutorial extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TutorialHome.setText("Home");
+        TutorialHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TutorialHomeActionPerformed(evt);
+            }
+        });
         getContentPane().add(TutorialHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/touch_type/keyboard.PNG"))); // NOI18N
@@ -96,6 +101,10 @@ public class Tutorial extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void TutorialHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorialHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TutorialHomeActionPerformed
 
     /**
      * @param args the command line arguments
