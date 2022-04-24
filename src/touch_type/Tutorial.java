@@ -40,8 +40,8 @@ public class Tutorial extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 1000));
-        setSize(new java.awt.Dimension(1000, 1000));
+        setPreferredSize(new java.awt.Dimension(1000, 750));
+        setSize(new java.awt.Dimension(1000, 750));
 
         TutorialHome.setText("Home");
         TutorialHome.addActionListener(new java.awt.event.ActionListener() {

@@ -37,7 +37,8 @@ public class Typing extends javax.swing.JFrame {
 
         TypingHome = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        TextOutput = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TextOutput = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         TextInput = new javax.swing.JTextField();
         ColourBlind = new javax.swing.JToggleButton();
@@ -46,6 +47,8 @@ public class Typing extends javax.swing.JFrame {
         Clock = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 750));
+        setSize(new java.awt.Dimension(1000, 750));
 
         TypingHome.setText("Home");
         TypingHome.addActionListener(new java.awt.event.ActionListener() {
@@ -56,8 +59,12 @@ public class Typing extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        TextOutput.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        TextOutput.setText("LLLLLLLLLLLLLLLLLLLLL");
+        TextOutput.setEditable(false);
+        TextOutput.setColumns(20);
+        TextOutput.setLineWrap(true);
+        TextOutput.setRows(5);
+        TextOutput.setText("...");
+        jScrollPane1.setViewportView(TextOutput);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,15 +72,15 @@ public class Typing extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TextOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TextOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -244,10 +251,11 @@ public class Typing extends javax.swing.JFrame {
     private javax.swing.JToggleButton Magnify;
     private javax.swing.JButton SaveStats;
     private javax.swing.JTextField TextInput;
-    private javax.swing.JLabel TextOutput;
+    private javax.swing.JTextArea TextOutput;
     private javax.swing.JButton TypingHome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
     /**
