@@ -41,6 +41,11 @@ public class Menu extends javax.swing.JFrame {
         Exit.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         Exit.setForeground(new java.awt.Color(255, 0, 51));
         Exit.setText("X");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
         getContentPane().add(Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         WordsBTN.setText("Words");
@@ -88,11 +93,17 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LettersBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LettersBTNActionPerformed
-        // TODO add your handling code here:
+        Typing typing = new Typing();
+        typing.setVisible(true);
+        typing.setMode(1);
+        this.setVisible(false);
     }//GEN-LAST:event_LettersBTNActionPerformed
 
     private void WordsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WordsBTNActionPerformed
-        // TODO add your handling code here:
+        Typing typing = new Typing();
+        typing.setVisible(true);
+        typing.setMode(2);
+        this.setVisible(false);
     }//GEN-LAST:event_WordsBTNActionPerformed
 
     private void TutorialBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorialBTNActionPerformed
@@ -106,8 +117,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_TutorialBTNMouseClicked
 
     private void ParagrahsBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParagrahsBTNActionPerformed
-        // TODO add your handling code here:
+        Typing typing = new Typing();
+        typing.setVisible(true);
+        typing.setMode(3);
+        this.setVisible(false);
     }//GEN-LAST:event_ParagrahsBTNActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_ExitActionPerformed
 
     /**
      * @param args the command line arguments
