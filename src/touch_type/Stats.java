@@ -4,6 +4,12 @@
  */
 package touch_type;
 
+import java.awt.Container;
+import java.io.File;
+import java.io.IOException; 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author Tom
@@ -50,6 +56,11 @@ public class Stats extends javax.swing.JFrame {
         StatsHomeBtn.setText("Home");
 
         SaveBtn.setText("Save");
+        SaveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveBtnActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         jLabel3.setText("Correct:");
@@ -135,6 +146,24 @@ public class Stats extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBtnActionPerformed
+        LocalDateTime date = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH:mm:ss");
+        String dateString = date.format(format);
+        try {
+            File file = new File("C:\\Users\\" + System.getProperty("user.name") + "\\TouchTypeStats_"+ dateString +".txt");
+            if (file.createNewFile()) {
+                System.out.println("File created at " + file.getName());
+            }
+            else{
+                System.out.println("File already exists");
+            }
+        } 
+        catch (IOException e) {
+            System.out.println("An error occurred.");
+        }
+    }//GEN-LAST:event_SaveBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -183,9 +212,16 @@ public class Stats extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 
-    public void setStats(int correct, int incorrect, int time, int words)
+    public void setStats(int words, long rawTime, int correct, int incorrect)
     {
+        Container c = getContentPane();
+        
+        long time = ((rawTime / 1000) / 60);
+        
+        WpmLbl.setText(String.valueOf(words / time));
+        TimeLbl.setText(String.valueOf(time));
+        CorrectLbl.setText(String.valueOf(correct));
+        IncorrectLbl.setText(String.valueOf(incorrect));
         
     }
-
 }

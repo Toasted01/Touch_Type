@@ -44,7 +44,6 @@ public class Typing extends javax.swing.JFrame {
         TextInput = new javax.swing.JTextField();
         ColourBlind = new javax.swing.JToggleButton();
         Magnify = new javax.swing.JToggleButton();
-        StartBtn = new javax.swing.JButton();
         Clock = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,6 +85,17 @@ public class Typing extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        TextInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TextInputFocusGained(evt);
+            }
+        });
+        TextInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TextInputKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -117,15 +127,8 @@ public class Typing extends javax.swing.JFrame {
             }
         });
 
-        StartBtn.setText("Start");
-        StartBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StartBtnActionPerformed(evt);
-            }
-        });
-
-        Clock.setFont(new java.awt.Font("sansserif", 0, 48)); // NOI18N
-        Clock.setText("00:00");
+        Clock.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        Clock.setText("Click to begin");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,9 +138,6 @@ public class Typing extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(TypingHome))
             .addGroup(layout.createSequentialGroup()
-                .addGap(430, 430, 430)
-                .addComponent(Clock))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
@@ -146,26 +146,27 @@ public class Typing extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(ColourBlind)
-                .addGap(264, 264, 264)
-                .addComponent(StartBtn)
-                .addGap(285, 285, 285)
+                .addGap(602, 602, 602)
                 .addComponent(Magnify))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Clock)
+                .addGap(395, 395, 395))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(TypingHome)
-                .addGap(2, 2, 2)
-                .addComponent(Clock)
-                .addGap(8, 8, 8)
+                .addGap(34, 34, 34)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Clock)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ColourBlind)
-                    .addComponent(StartBtn)
                     .addComponent(Magnify)))
         );
 
@@ -185,41 +186,6 @@ public class Typing extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_ColourBlindActionPerformed
-
-    private void StartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartBtnActionPerformed
-        Long startTime = System.currentTimeMillis();
-        Container c = getContentPane();
-        StartBtn.setEnabled(false);
-        switch (mode) {
-        case 1:
-            String[] letterArray = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
-            Random random = new Random(); 
-            int max = 25;
-            int hits = 0;
-            int misses = 0;
-            for(int i = 1; i < 51; i++)
-            {
-                int position = random.nextInt(max); 
-                String letter = letterArray[position];
-                TextOutput.setText(letter);
-                while(TextInput.getText() == null)
-                {
-                    if(TextInput.getText().equals(TextOutput.getText()))
-                    {
-                    
-                    }
-                    TextInput.setText(null);
-                }
-            }
-            
-            Long endTime = System.currentTimeMillis();
-            break;
-        case 2:
-             break;
-        case 3:
-             break;
-       }
-    }//GEN-LAST:event_StartBtnActionPerformed
 
     private void MagnifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MagnifyActionPerformed
         Container c = getContentPane();
@@ -241,6 +207,58 @@ public class Typing extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_TypingHomeActionPerformed
+
+    private void TextInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextInputKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextInputKeyPressed
+
+    private void TextInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextInputFocusGained
+        /**
+        Long startTime = System.currentTimeMillis();
+        Container c = getContentPane();
+        Stats stats = new Stats();
+        switch (mode) {
+        case 1:
+            String[] letterArray = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+            Random random = new Random(); 
+            int max = 25;
+            int hit = 0;
+            int miss = 0;            
+            
+            for(int i = 0; i < 50;)
+            {
+                int position = random.nextInt(max); 
+                String letter = letterArray[position];
+                TextOutput.setText(letter);
+                if(!TextInput.getText().equals(""))
+                {
+                    if(TextInput.getText().equals(TextOutput.getText()))
+                    {
+                        hit++;
+                    }
+                    else
+                    {
+                        miss++;
+                    }
+                    i++;
+                    TextInput.setText("");
+                }
+            }
+            
+            Long endTime = System.currentTimeMillis();
+            long time = endTime - startTime;
+            stats.setVisible(true);
+            stats.setStats(50, time, hit, miss);
+            this.setVisible(false);
+            
+            break;
+        case 2:
+             break;
+        case 3:
+             break;
+       }
+       **/
+    }//GEN-LAST:event_TextInputFocusGained
 
     /**
      * @param args the command line arguments
@@ -281,7 +299,6 @@ public class Typing extends javax.swing.JFrame {
     private javax.swing.JLabel Clock;
     private javax.swing.JToggleButton ColourBlind;
     private javax.swing.JToggleButton Magnify;
-    private javax.swing.JButton StartBtn;
     private javax.swing.JTextField TextInput;
     private javax.swing.JTextArea TextOutput;
     private javax.swing.JButton TypingHome;
