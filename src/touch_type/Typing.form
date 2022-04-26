@@ -49,7 +49,7 @@
               <EmptySpace min="110" pref="110" max="-2" attributes="0"/>
               <Component id="ColourBlind" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="264" pref="264" max="-2" attributes="0"/>
-              <Component id="SaveStats" min="-2" max="-2" attributes="0"/>
+              <Component id="StartBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="285" pref="285" max="-2" attributes="0"/>
               <Component id="Magnify" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -69,7 +69,7 @@
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="ColourBlind" min="-2" max="-2" attributes="0"/>
-                  <Component id="SaveStats" min="-2" max="-2" attributes="0"/>
+                  <Component id="StartBtn" min="-2" max="-2" attributes="0"/>
                   <Component id="Magnify" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -185,12 +185,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MagnifyActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="SaveStats">
+    <Component class="javax.swing.JButton" name="StartBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Save"/>
+        <Property name="text" type="java.lang.String" value="Start"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveStatsActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StartBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Clock">

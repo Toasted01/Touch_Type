@@ -6,6 +6,7 @@ package touch_type;
 
 import java.awt.Container;
 import java.awt.Font;
+import java.util.Random;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Typing extends javax.swing.JFrame {
     /**
      * My Variables
      */
-    public int mode = 0;
+    public static int mode = 0;
     private int colour = 0;
     
     /**
@@ -43,7 +44,7 @@ public class Typing extends javax.swing.JFrame {
         TextInput = new javax.swing.JTextField();
         ColourBlind = new javax.swing.JToggleButton();
         Magnify = new javax.swing.JToggleButton();
-        SaveStats = new javax.swing.JButton();
+        StartBtn = new javax.swing.JButton();
         Clock = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,10 +117,10 @@ public class Typing extends javax.swing.JFrame {
             }
         });
 
-        SaveStats.setText("Save");
-        SaveStats.addActionListener(new java.awt.event.ActionListener() {
+        StartBtn.setText("Start");
+        StartBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveStatsActionPerformed(evt);
+                StartBtnActionPerformed(evt);
             }
         });
 
@@ -146,7 +147,7 @@ public class Typing extends javax.swing.JFrame {
                 .addGap(110, 110, 110)
                 .addComponent(ColourBlind)
                 .addGap(264, 264, 264)
-                .addComponent(SaveStats)
+                .addComponent(StartBtn)
                 .addGap(285, 285, 285)
                 .addComponent(Magnify))
         );
@@ -164,7 +165,7 @@ public class Typing extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ColourBlind)
-                    .addComponent(SaveStats)
+                    .addComponent(StartBtn)
                     .addComponent(Magnify)))
         );
 
@@ -185,9 +186,40 @@ public class Typing extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ColourBlindActionPerformed
 
-    private void SaveStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveStatsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaveStatsActionPerformed
+    private void StartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartBtnActionPerformed
+        Long startTime = System.currentTimeMillis();
+        Container c = getContentPane();
+        StartBtn.setEnabled(false);
+        switch (mode) {
+        case 1:
+            String[] letterArray = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+            Random random = new Random(); 
+            int max = 25;
+            int hits = 0;
+            int misses = 0;
+            for(int i = 1; i < 51; i++)
+            {
+                int position = random.nextInt(max); 
+                String letter = letterArray[position];
+                TextOutput.setText(letter);
+                while(TextInput.getText() == null)
+                {
+                    if(TextInput.getText().equals(TextOutput.getText()))
+                    {
+                    
+                    }
+                    TextInput.setText(null);
+                }
+            }
+            
+            Long endTime = System.currentTimeMillis();
+            break;
+        case 2:
+             break;
+        case 3:
+             break;
+       }
+    }//GEN-LAST:event_StartBtnActionPerformed
 
     private void MagnifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MagnifyActionPerformed
         Container c = getContentPane();
@@ -249,7 +281,7 @@ public class Typing extends javax.swing.JFrame {
     private javax.swing.JLabel Clock;
     private javax.swing.JToggleButton ColourBlind;
     private javax.swing.JToggleButton Magnify;
-    private javax.swing.JButton SaveStats;
+    private javax.swing.JButton StartBtn;
     private javax.swing.JTextField TextInput;
     private javax.swing.JTextArea TextOutput;
     private javax.swing.JButton TypingHome;
@@ -267,6 +299,7 @@ public class Typing extends javax.swing.JFrame {
     {
         mode = modeInput;
     }
+    
     
     
 }
