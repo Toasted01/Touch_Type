@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException; 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.io.FileWriter;
 
 /**
  *
@@ -16,6 +17,11 @@ import java.time.format.DateTimeFormatter;
  */
 public class Stats extends javax.swing.JFrame {
 
+    String wpm;
+    String time;
+    String correct;
+    String incorrect;
+    
     /**
      * Creates new form Stats
      */
@@ -162,6 +168,16 @@ public class Stats extends javax.swing.JFrame {
         catch (IOException e) {
             System.out.println("An error occurred.");
         }
+        
+        try {
+            FileWriter fileWriter = new FileWriter("C:\\Users\\" + System.getProperty("user.name") + "\\TouchTypeStats_"+ dateString +".txt");
+            fileWriter.write("WPN: "+ wpm +", Time: "+ time +", Correct: "+ correct +", Incorrect: "+ incorrect);
+            fileWriter.close();
+            System.out.println("Writen to file");
+        }   
+        catch (IOException e) {
+            System.out.println("An error has occurred.");
+        } 
     }//GEN-LAST:event_SaveBtnActionPerformed
 
     /**
@@ -216,12 +232,17 @@ public class Stats extends javax.swing.JFrame {
     {
         Container c = getContentPane();
         
-        long time = ((rawTime / 1000) / 60);
+        long timeMath = ((rawTime / 1000) / 60);
         
-        WpmLbl.setText(String.valueOf(words / time));
-        TimeLbl.setText(String.valueOf(time));
-        CorrectLbl.setText(String.valueOf(correct));
-        IncorrectLbl.setText(String.valueOf(incorrect));
+        wpm = String.valueOf(words / timeMath);
+        time = String.valueOf(timeMath);
+        this.correct = String.valueOf(correct);
+        this.incorrect = String.valueOf(incorrect);
+        
+        WpmLbl.setText(wpm);
+        TimeLbl.setText(time);
+        CorrectLbl.setText(this.correct);
+        IncorrectLbl.setText(this.incorrect);
         
     }
 }

@@ -6,6 +6,7 @@ package touch_type;
 
 import java.awt.Container;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -26,6 +27,9 @@ public class Typing extends javax.swing.JFrame {
      */
     public static int mode = 0;
     private int colour = 0;
+    private ArrayList<String> textArray = new ArrayList<>();
+    private Long startTime;
+    private Long endTime;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -213,43 +217,32 @@ public class Typing extends javax.swing.JFrame {
     }//GEN-LAST:event_TextInputKeyPressed
 
     private void TextInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextInputFocusGained
-        /**
-        Long startTime = System.currentTimeMillis();
+
+        startTime = System.currentTimeMillis();
         Container c = getContentPane();
         Stats stats = new Stats();
+        
         switch (mode) {
         case 1:
             String[] letterArray = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
             Random random = new Random(); 
-            int max = 25;
-            int hit = 0;
-            int miss = 0;            
+            int max = 25;          
             
-            for(int i = 0; i < 50;)
+            for(int i = 0; i < 20; i++)
             {
                 int position = random.nextInt(max); 
                 String letter = letterArray[position];
-                TextOutput.setText(letter);
-                if(!TextInput.getText().equals(""))
+                textArray.add(letter);
+                
+                String textDisplay = "";
+                
+                for(String text : textArray)
                 {
-                    if(TextInput.getText().equals(TextOutput.getText()))
-                    {
-                        hit++;
-                    }
-                    else
-                    {
-                        miss++;
-                    }
-                    i++;
-                    TextInput.setText("");
+                    textDisplay = textDisplay.concat(text);
                 }
-            }
-            
-            Long endTime = System.currentTimeMillis();
-            long time = endTime - startTime;
-            stats.setVisible(true);
-            stats.setStats(50, time, hit, miss);
-            this.setVisible(false);
+                
+                TextOutput.setText(textDisplay);
+            }    
             
             break;
         case 2:
@@ -257,7 +250,7 @@ public class Typing extends javax.swing.JFrame {
         case 3:
              break;
        }
-       **/
+       
     }//GEN-LAST:event_TextInputFocusGained
 
     /**
