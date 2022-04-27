@@ -14,6 +14,8 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.time.Duration;
+import java.time.Instant;
 
 /**
  *
@@ -41,6 +43,9 @@ public class Typing extends javax.swing.JFrame {
     int hit = 0;
     int miss = 0;
     Container c = getContentPane();
+    int numberCompleted = 0;
+    Instant start;
+    Instant end;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -257,17 +262,29 @@ public class Typing extends javax.swing.JFrame {
 
     private void TextInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextInputKeyPressed
         
-        String input = TextInput.getText();
-        //String text = input.substring(input.length()-1);
-        String text = "a";
+        int code = evt.getKeyCode();
+        String input = KeyEvent.getKeyText(code);
         
         jLabel1.setText(input);
         
-        if(text.length()==1)
+        if(input.equals("Period"))
         {
-            type(1, text);
+            input = ".";
         }
-        if(text.equals("BACKSPACE"))
+        if(input.equals("Comma"))
+        {
+            input = ".";
+        }
+        if(input.equals("Slash"))
+        {
+            input = "?";
+        }
+        
+        if(input.length()==1)
+        {
+            type(1, input);
+        }
+        if(input.equals("BACKSPACE"))
         {
             type(2, "");
         }
@@ -277,7 +294,8 @@ public class Typing extends javax.swing.JFrame {
     private void TextInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextInputFocusGained
 
         inputPosition = 0;
-        startTime = System.currentTimeMillis();
+        //startTime = System.currentTimeMillis();
+        start = Instant.now();
         Stats stats = new Stats();
         Random random = new Random();
         String textDisplay = "";
@@ -332,7 +350,7 @@ public class Typing extends javax.swing.JFrame {
              break;
         case 3:
             
-            String[] paragraphArray = {"Hello i am John Johnson and i am a career criminal and make a lot of money.","What is the meaning of life and why is it fourty two?","Who are you and how did you get into my house. Get out or i will call the police!","I like my coffee black with two sugars. Why? Because I hate milk.","I cannot sleep, every day blurs together. I think i should see a doctor because this is not normal. What do you think?"};
+            String[] paragraphArray = {"Hello i am John Johnson and i am a career criminal and make a lot of money.","What is the meaning of life and why is it fourty two?","Who are you and how did you get into my house. Get out or i will call the police.","I like my coffee black with two sugars. Why? Because I hate milk.","I cannot sleep, every day blurs together. I think i should see a doctor because this is not normal. What do you think?"};
             int countParagraph = 5;          
 
             int position = random.nextInt(countParagraph); 
@@ -421,7 +439,6 @@ public class Typing extends javax.swing.JFrame {
     
     public void type(int number, String text)
     {
-        int numberCompleted = 0;
         boolean missedLast = false;
         boolean hitLast = false;
                 
@@ -432,10 +449,11 @@ public class Typing extends javax.swing.JFrame {
                 String check = textArray.get(inputPosition);
                 inputPosition++; 
                 
-                if(text.equals(check))
+                if(text.equals(check.toUpperCase()))
                 {
                     if(!missedLast)
                     {
+                        numberCompleted++;
                         hit++; 
                         HitLbl.setText("Hits: "+hit);
                         hitLast = true;
@@ -445,6 +463,7 @@ public class Typing extends javax.swing.JFrame {
                 {
                     if(!hitLast)
                     {
+                        numberCompleted++;
                         miss++;
                         MissLbl.setText("Misses: "+miss);
                         missedLast = true;
@@ -453,16 +472,20 @@ public class Typing extends javax.swing.JFrame {
                 
                 if(numberCompleted == textArray.size())
                 {
-                    endTime = System.currentTimeMillis();
-                    Long time = endTime - startTime;
+                    //endTime = System.currentTimeMillis();
+                    end = Instant.now();
+                    Duration duration = Duration.between(start, end);
+                    Long time = duration.toMillis();
+                    //Long time = endTime - startTime;
                     
                     Stats stats = new Stats();
                     stats.setVisible(true);
                     
                     int words = (textArray.size())/5;
+                    System.out.println(words+" "+time+" "+hit+" "+miss);
                     stats.setStats(words, time, hit, miss);
                         
-                     this.setVisible(false);
+                    this.setVisible(false);
                 }
                 break;
                 

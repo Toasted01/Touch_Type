@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.io.FileWriter;
+import java.time.Duration;
+import java.time.Instant;
 
 /**
  *
@@ -48,9 +50,9 @@ public class Stats extends javax.swing.JFrame {
         IncorrectLbl = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         TimeLbl = new javax.swing.JLabel();
+        SavePath = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 750));
         setSize(new java.awt.Dimension(1000, 750));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 48)); // NOI18N
@@ -86,6 +88,8 @@ public class Stats extends javax.swing.JFrame {
         TimeLbl.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         TimeLbl.setText("00:00");
 
+        SavePath.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,17 +114,19 @@ public class Stats extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TimeLbl))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(CorrectLbl))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(IncorrectLbl)))
+                                        .addComponent(IncorrectLbl))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(SavePath)
+                                            .addComponent(jLabel7))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(TimeLbl)))
                                 .addGap(441, 441, 441))))))
         );
         layout.setVerticalGroup(
@@ -146,7 +152,9 @@ public class Stats extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(TimeLbl))
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
+                .addComponent(SavePath)
+                .addContainerGap())
         );
 
         pack();
@@ -154,12 +162,14 @@ public class Stats extends javax.swing.JFrame {
 
     private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBtnActionPerformed
         LocalDateTime date = LocalDateTime.now();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH:mm:ss");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH-mm-ss");
         String dateString = date.format(format);
         try {
-            File file = new File("C:\\Users\\" + System.getProperty("user.name") + "\\TouchTypeStats_"+ dateString +".txt");
+            File file = new File("TouchTypeStats_"+ dateString +".txt");
             if (file.createNewFile()) {
-                System.out.println("File created at " + file.getName());
+                System.out.println("File created at " + file.getAbsolutePath());
+                SavePath.setText("File created at " + file.getAbsolutePath());
+                SaveBtn.setEnabled(false);
             }
             else{
                 System.out.println("File already exists");
@@ -170,7 +180,7 @@ public class Stats extends javax.swing.JFrame {
         }
         
         try {
-            FileWriter fileWriter = new FileWriter("C:\\Users\\" + System.getProperty("user.name") + "\\TouchTypeStats_"+ dateString +".txt");
+            FileWriter fileWriter = new FileWriter("TouchTypeStats_"+ dateString +".txt");
             fileWriter.write("WPN: "+ wpm +", Time: "+ time +", Correct: "+ correct +", Incorrect: "+ incorrect);
             fileWriter.close();
             System.out.println("Writen to file");
@@ -219,6 +229,7 @@ public class Stats extends javax.swing.JFrame {
     private javax.swing.JLabel CorrectLbl;
     private javax.swing.JLabel IncorrectLbl;
     private javax.swing.JButton SaveBtn;
+    private javax.swing.JLabel SavePath;
     private javax.swing.JButton StatsHomeBtn;
     private javax.swing.JLabel TimeLbl;
     private javax.swing.JLabel WpmLbl;
@@ -232,9 +243,11 @@ public class Stats extends javax.swing.JFrame {
     {
         Container c = getContentPane();
         
-        long timeMath = ((rawTime / 1000) / 60);
+        long timeMath = ((rawTime / 1000) % 60);
+        System.out.println(timeMath);
+        int wpmCalc = (int) ((words * 60) % (timeMath * 60));
         
-        wpm = String.valueOf(words / timeMath);
+        wpm = String.valueOf(wpmCalc);
         time = String.valueOf(timeMath);
         this.correct = String.valueOf(correct);
         this.incorrect = String.valueOf(incorrect);
