@@ -174,20 +174,20 @@ public class Stats extends javax.swing.JFrame {
             else{
                 System.out.println("File already exists");
             }
-        } 
+        }
         catch (IOException e) {
             System.out.println("An error occurred.");
         }
-        
+
         try {
             FileWriter fileWriter = new FileWriter("TouchTypeStats_"+ dateString +".txt");
             fileWriter.write("WPN: "+ wpm +", Time: "+ time +", Correct: "+ correct +", Incorrect: "+ incorrect);
             fileWriter.close();
             System.out.println("Writen to file");
-        }   
+        }
         catch (IOException e) {
             System.out.println("An error has occurred.");
-        } 
+        }
     }//GEN-LAST:event_SaveBtnActionPerformed
 
     /**
