@@ -255,7 +255,7 @@ public class Typing extends javax.swing.JFrame {
     }//GEN-LAST:event_TypingHomeActionPerformed
 
     private void TextInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextInputKeyPressed
-        
+      
         int code = evt.getKeyCode();
         String input = KeyEvent.getKeyText(code);
         
@@ -281,8 +281,8 @@ public class Typing extends javax.swing.JFrame {
         if(input.equals("BACKSPACE"))
         {
             type(2, "");
-        }
-            
+        }  
+        
     }//GEN-LAST:event_TextInputKeyPressed
 
     private void TextInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextInputFocusGained
@@ -491,6 +491,123 @@ public class Typing extends javax.swing.JFrame {
                 break;
         }
         
+    }
+    
+    public void TextInputFocusGainedTest() {                                      
+
+        inputPosition = 0;
+        //startTime = System.currentTimeMillis();
+        start = Instant.now();
+        Stats stats = new Stats();
+        Random random = new Random();
+        String textDisplay = "";
+        ArrayList<String> splitArray = new ArrayList<>();
+        
+        switch (mode) {
+        case 1:
+            String[] letterArray = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+             
+            int countLetters = 25;          
+            
+            for(int i = 0; i < 20; i++)
+            {
+                int position = random.nextInt(countLetters); 
+                //String letter = letterArray[position];
+                String letter = "a";
+                textArray.add(letter);
+            }
+            
+            for(String text : textArray)
+                {
+                    textDisplay = textDisplay.concat(text);
+                }
+            
+            break;
+        case 2:
+            
+            String[] wordArray = {"case","voice","prosper","trolley","factor","coffee","expose","session","retire","requirement","on","assembly","asylum","theory","entry","concentration","conviction","gene","mixture","conscious"," donor","score","reception","telephone","planet","pavement","tune","horseshoe","current","modest","calculation","offset","fish","permanent","staircase","round","crew","by","bike","experience","other","net","fall","adoption","go","speculate","poor","imposter","giant","midnight","dull","blind","finance","straw","jet","trouble","soap","plot","sight","twilight","audience","bind","fund","field","speed","communication","distortion","perform","rugby","extension","cooperation"};
+
+            int countWords = 70;          
+            
+            for(int i = 0; i < 10; i++)
+            {
+                int position = random.nextInt(countWords); 
+                String word = wordArray[position];
+                String wordSplit[] = word.split("");                
+                
+                for (String wordSplit1 : wordSplit) {
+                    splitArray.add(wordSplit1);
+                }                
+                if(i != 9)
+                {
+                    splitArray.add(" ");
+                }
+            } 
+            
+            for(String text : splitArray)
+                {
+                    textArray.add(text);
+                    textDisplay = textDisplay.concat(text);
+                }
+            
+             break;
+        case 3:
+            
+            String[] paragraphArray = {"Hello i am John Johnson and i am a career criminal and make a lot of money.","What is the meaning of life and why is it fourty two?","Who are you and how did you get into my house. Get out or i will call the police.","I like my coffee black with two sugars. Why? Because I hate milk.","I cannot sleep, every day blurs together. I think i should see a doctor because this is not normal. What do you think?"};
+            int countParagraph = 5;          
+
+            int position = random.nextInt(countParagraph); 
+            String paragraph = paragraphArray[position];
+            String paragraphSplit[] = paragraph.split("");
+                
+            for (String paraSplit : paragraphSplit) {
+                splitArray.add(paraSplit);
+            } 
+                
+            for(String text : splitArray)
+            {
+                textArray.add(text);
+                textDisplay = textDisplay.concat(text);
+            }
+
+             break;
+        }
+        
+        TextOutput.setText(textDisplay);
+    }
+    
+    public void TextInputKeyPressedTest() {                                     
+      /**
+        int code = evt.getKeyCode();
+        String input = KeyEvent.getKeyText(code);
+        
+       
+        
+        if(input.equals("Period"))
+        {
+            input = ".";
+        }
+        if(input.equals("Comma"))
+        {
+            input = ".";
+        }
+        if(input.equals("Slash"))
+        {
+            input = "?";
+        }
+        
+        if(input.length()==1)
+        {
+            type(1, input);
+        }
+        if(input.equals("BACKSPACE"))
+        {
+            type(2, "");
+        }  
+        **/
+      for(int i = 0; i<20; i++){
+          type(1, "a");
+      }
     }
     
 }
