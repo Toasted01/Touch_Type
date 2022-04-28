@@ -18,6 +18,7 @@ public class TypingTest{
     @Test
     public void testType(){
         typing.TextInputFocusGainedTest();
+        typing.TextInputKeyPressedTest();
     }
         
 }
