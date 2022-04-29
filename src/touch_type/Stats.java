@@ -243,9 +243,15 @@ public class Stats extends javax.swing.JFrame {
     {
         Container c = getContentPane();
         
-        long timeMath = ((rawTime / 1000) % 60);
+        long timeMath = ((rawTime / 1000));
         System.out.println(timeMath);
-        int wpmCalc = (int) ((words * 60) % (timeMath * 60));
+        int wpmCalc = 0;
+        if(timeMath < 60)
+        {
+            timeMath = (timeMath/60)*100;
+        }
+        
+        wpmCalc = (int) (words / timeMath);
         
         wpm = String.valueOf(wpmCalc);
         time = String.valueOf(timeMath);
