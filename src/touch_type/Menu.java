@@ -130,6 +130,7 @@ public class Menu extends javax.swing.JFrame {
         Typing typing = new Typing();
         typing.setVisible(true);
         typing.setMode(1);
+        System.out.println(1);
         this.setVisible(false);
     }//GEN-LAST:event_LettersBTNActionPerformed
 
@@ -137,12 +138,14 @@ public class Menu extends javax.swing.JFrame {
         Typing typing = new Typing();
         typing.setVisible(true);
         typing.setMode(2);
+        System.out.println(2);
         this.setVisible(false);
     }//GEN-LAST:event_WordsBTNActionPerformed
 
     private void TutorialBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TutorialBTNActionPerformed
         Tutorial tutorial = new Tutorial();
         tutorial.setVisible(true);
+        System.out.println(0);
         this.setVisible(false);
     }//GEN-LAST:event_TutorialBTNActionPerformed
 
@@ -154,6 +157,7 @@ public class Menu extends javax.swing.JFrame {
         Typing typing = new Typing();
         typing.setVisible(true);
         typing.setMode(3);
+        System.out.println(3);
         this.setVisible(false);
     }//GEN-LAST:event_ParagrahsBTNActionPerformed
 

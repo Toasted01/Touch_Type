@@ -4,6 +4,7 @@
  */
 package touch_type;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -160,9 +161,11 @@ public class Typing extends javax.swing.JFrame {
             }
         });
 
+        HitLbl.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         HitLbl.setForeground(new java.awt.Color(0, 255, 0));
         HitLbl.setText(" ");
 
+        MissLbl.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         MissLbl.setForeground(new java.awt.Color(255, 0, 0));
         MissLbl.setText(" ");
 
@@ -243,11 +246,13 @@ public class Typing extends javax.swing.JFrame {
                
         if (ColourBlind.isSelected())
         {
-            colour = 1;
+            HitLbl.setForeground(Color.BLACK);
+            MissLbl.setForeground(Color.BLACK);
         }
         else
         {
-            colour = 0;
+            HitLbl.setForeground(Color.GREEN);
+            MissLbl.setForeground(Color.RED);
         }
         
     }//GEN-LAST:event_ColourBlindActionPerformed
@@ -304,7 +309,95 @@ public class Typing extends javax.swing.JFrame {
     }//GEN-LAST:event_TextInputKeyPressed
 
     private void TextInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextInputFocusGained
+jButton1.setEnabled(false);
+//        Timer timer = new Timer(1000, new ActionListener(){
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                time++;
+//                TimerLbl.setText(time+"s");
+//            }
+//        });
+//        timer.start();
+        
+        inputPosition = 0;
+        //startTime = System.currentTimeMillis();
+        start = Instant.now();
+        Stats stats = new Stats();
+        Random random = new Random();
+        String textDisplay = "";
+        ArrayList<String> splitArray = new ArrayList<>();      
+        
+        switch (mode) {
+        case 1:
+            String[] letterArray = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+             
+            int countLetters = 25;          
+            
+            for(int i = 0; i < 20; i++)
+            {
+                int position = random.nextInt(countLetters); 
+                String letter = letterArray[position];
+                textArray.add(letter);
+            }
+            
+            for(String text : textArray)
+                {
+                    textDisplay = textDisplay.concat(text);
+                }
+            
+            break;
+        case 2:
+            
+            String[] wordArray = {"case","voice","prosper","trolley","factor","coffee","expose","session","retire","requirement","on","assembly","asylum","theory","entry","concentration","conviction","gene","mixture","conscious"," donor","score","reception","telephone","planet","pavement","tune","horseshoe","current","modest","calculation","offset","fish","permanent","staircase","round","crew","by","bike","experience","other","net","fall","adoption","go","speculate","poor","imposter","giant","midnight","dull","blind","finance","straw","jet","trouble","soap","plot","sight","twilight","audience","bind","fund","field","speed","communication","distortion","perform","rugby","extension","cooperation"};
 
+            int countWords = 70;          
+            
+            for(int i = 0; i < 10; i++)
+            {
+                int position = random.nextInt(countWords); 
+                String word = wordArray[position];
+                String wordSplit[] = word.split("");                
+                
+                for (String wordSplit1 : wordSplit) {
+                    splitArray.add(wordSplit1);
+                }                
+                if(i != 9)
+                {
+                    splitArray.add(" ");
+                }
+            } 
+            
+            for(String text : splitArray)
+                {
+                    textArray.add(text);
+                    textDisplay = textDisplay.concat(text);
+                }
+            
+             break;
+        case 3:
+            
+            String[] paragraphArray = {"Hello i am John Johnson and i am a career criminal and make a lot of money.","What is the meaning of life and why is it fourty two?","Who are you and how did you get into my house. Get out or i will call the police.","I like my coffee black with two sugars. Why? Because I hate milk.","I cannot sleep, every day blurs together. I think i should see a doctor because this is not normal. What do you think?"};
+            int countParagraph = 5;          
+
+            int position = random.nextInt(countParagraph); 
+            String paragraph = paragraphArray[position];
+            String paragraphSplit[] = paragraph.split("");
+                
+            for (String paraSplit : paragraphSplit) {
+                splitArray.add(paraSplit);
+            } 
+                
+            for(String text : splitArray)
+            {
+                textArray.add(text);
+                textDisplay = textDisplay.concat(text);
+            }
+
+             break;
+        }
+        
+        TextOutput.setText(textDisplay);
     }//GEN-LAST:event_TextInputFocusGained
 
     private void TextInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextInputKeyTyped
@@ -312,16 +405,16 @@ public class Typing extends javax.swing.JFrame {
     }//GEN-LAST:event_TextInputKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        Timer timer = new Timer(1000, new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                time++;
-                TimerLbl.setText(time+"s");
-            }
-        });
-        timer.start();
+    //jButton1.setEnabled(false);
+//        Timer timer = new Timer(1000, new ActionListener(){
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                time++;
+//                TimerLbl.setText(time+"s");
+//            }
+//        });
+//        timer.start();
         
         inputPosition = 0;
         //startTime = System.currentTimeMillis();
@@ -465,6 +558,7 @@ public class Typing extends javax.swing.JFrame {
     
     public void type(int number, String text)
     {
+        int changed = 0;
                        
         switch (number) {
             
@@ -473,27 +567,23 @@ public class Typing extends javax.swing.JFrame {
                 String check = textArray.get(inputPosition);
                 inputPosition++; 
                 
-                if(text.equals(check.toUpperCase()))
-                {
-                    if(!missedLast)
+                if(changed == 0){
+                    numberCompleted++;
+                    if(text.equals(check.toUpperCase()))
                     {
-                        numberCompleted++;
-                        hit++; 
-                        HitLbl.setText("Hits: "+hit);
-                        hitLast = true;
-                        missedLast = false;
-                    }                    
+                            
+                            hit++; 
+                            HitLbl.setText("Hits: "+hit);              
+                    }
+                    else
+                    {
+                            miss++;
+                            MissLbl.setText("Misses: "+miss);
+                    }
                 }
                 else
                 {
-                    if(!hitLast)
-                    {
-                        numberCompleted++;
-                        miss++;
-                        MissLbl.setText("Misses: "+miss);
-                        missedLast = true;
-                        hitLast = false;
-                    }
+                    changed++;
                 }
                 
                 if(numberCompleted == textArray.size())
@@ -520,6 +610,7 @@ public class Typing extends javax.swing.JFrame {
                 if(inputPosition>0)
                 {
                 inputPosition = inputPosition - 1;
+                changed = changed - 1;
                 }
                 break;
         }
